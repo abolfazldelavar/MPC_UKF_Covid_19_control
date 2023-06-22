@@ -1,26 +1,24 @@
 close all; clear; clc;
 
 %% // --------------------------------------------------------------
-%    Creator:    Abolfazl Delavar - Reza Rahimi
-%    Email:        abolfazldelavar@outlook.com
-%    Field:        Control Engineering
-%    Project:    Covid-19-IEEE-Paper
+%    Creator:  Abolfazl Delavar - Reza Rahimi
+%    Email:    abolfazldelavar@outlook.com
+%    Field:    Control Engineering
+%    Project:  Covid-19-IEEE-Paper
 % \\ --------------------------------------------------------------
 
-%% Set parameters
+%% Configuration
 params = setParameters();
 
-%% Run functions
+%% Running functions
 func = functionLibrary();
 
-%% Make models
+%% Making models
 models = modelMaker(params, func);
 
 %% Simulation file
 models = simulationModels(params, models, func);
 
-%% Plot results
+%% Plotting results
 plotResults(params, models, func, 'iter');
 plotResults(params, models, func, 'final');
-
-% Last edit date: 11/17/2021

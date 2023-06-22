@@ -6,29 +6,29 @@ function models = simulationModels(params, models, func)
     
     %% Simulation main loop
     for t = 1:params.n
-        % Display iteration number in the command window
+        % Displaing the iteration number in the command window
         func.disit(t, params.n, 10);
         if rem(t,10) == 0
             plotResults(params, models, [], 'iter');
         end
         
-        % Create control signal
+        % Creating control signal
         models.inputCovid(:,t) = ControlSignal;
         
-        % Update Plant
+        % Updating Plant
         models.covid = models.covid.nextstep(models.inputCovid(:,t));
         
         % Measurement
         models.measurement(:,t) = models.covid.outputs(:,t) + models.measurementNoise(:,t);
         models.measurement(:,t) = models.measurement(:,t).*double(models.measurement(:,t) > 0);
         
-        % Update EKF-UKF
+        % Updating EKF-UKF
         models.extkf = models.extkf.nextstepEKF(models.inputCovid(:,t), models.measurement(:,t));
         
         % NMPC
         models.extkf = models.extkf.nextstepNMPC(models.const);
         
-        % Go to next ahead EKFNMPC
+        % Going to the next step EKFNMPC
         models.extkf = models.extkf.goAhead(1);
         
         if params.filterCntrlorNot == 1
@@ -40,6 +40,5 @@ function models = simulationModels(params, models, func)
         
     end
     
-    %% After running orders
     func.sayEnd();
 end
