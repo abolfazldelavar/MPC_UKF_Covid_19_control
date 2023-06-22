@@ -3,7 +3,7 @@ This repository carries the simulation files of the "Modeling, estimation, and m
 
 Authors: Abolfazl Delavar, Reza Rahimi
 
-All rights reserved. [LICENSE](LICENCE)
+All rights reserved. [LICENSE](LICENSE)
 
 Paper page (Open access - the PDF file is ready to download):
 DOI: https://doi.org/10.1109/ICEE55646.2022.9827062
